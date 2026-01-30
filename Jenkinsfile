@@ -1,9 +1,9 @@
 pipeline {
     agent any
-    stages{
+    stages {
         stage {
             steps{
-                sh `echo "Hello World!"`
+                sh 'echo "Hello World!"'
                 sh '''
                     echo "Multiline shell steps works too"
                 '''
