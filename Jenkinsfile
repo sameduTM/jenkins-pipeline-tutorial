@@ -12,4 +12,12 @@ pipeline {
             }
         }
     }
+    post {
+        always {
+            echo 'One way or another, I have finished'
+        }
+        success {
+            mail(to: 'wekesa884@gmail', subject: 'Success: ${currentBuild.fullDisplayName}', body: "Everything went swell!")
+        }
+    }
 }
