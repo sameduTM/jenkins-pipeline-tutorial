@@ -5,11 +5,14 @@ pipeline {
         COUNTRY = 'Kenya'
     }
     stages {
-        stage('Deploy') {
+        stage('Deploy - Staging') {
             steps {
                 echo "Hello ${USERNAME}, welcome to ${COUNTRY}"
                 sh 'printenv'
             }
+        }
+        stage('Deploy - Production') {
+            input(message: 'Does the staging env look ok?')
         }
     }
     post {
