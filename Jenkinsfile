@@ -1,27 +1,15 @@
 pipeline {
     agent any
-    stages{
-        stage('Test') {
-            steps {
-                sh 'echo "Fail!"; exit 1'
-            }
-        }
+    environment {
+        USERNAME = 'Ken Wekesa'
+        COUNTRY = 'Kenya'
     }
-    post {
-        always {
-            echo "Pipeline Completed"
-        }
-        success {
-            echo "Pipeline ran successfully"
-        }
-        failure {
-            echo "Pipeline failed"
-        }
-        changed {
-            echo "Pipeline stage changed"
-        }
-        unstable {
-            echo "The run was unstable"
+    stages {
+        stage('Deploy') {
+            steps {
+                echo "Hello ${USERNAME}, welcome to ${COUNTRY}"
+                sh 'printenv'
+            }
         }
     }
 }
