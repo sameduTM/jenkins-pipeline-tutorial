@@ -12,7 +12,9 @@ pipeline {
             }
         }
         stage('Deploy - Production') {
-            input(message: 'Does the staging env look ok?')
+            steps{
+                input(message: 'Does the staging env look ok?')
+            }
         }
     }
     post {
