@@ -17,7 +17,11 @@ pipeline {
             echo 'One way or another, I have finished'
         }
         success {
-            mail(to: 'wekesa884@gmail', subject: 'Success: ${currentBuild.fullDisplayName}', body: "Everything went swell!")
+            mail(
+                to: 'wanyamak884@icloud.com', 
+                subject: 'Success: ${currentBuild.fullDisplayName}', 
+                body: "Everything went swell!"
+                )
         }
     }
 }
