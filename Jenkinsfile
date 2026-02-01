@@ -20,7 +20,8 @@ pipeline {
         }
         success {
             echo 'app run successfully'
-            sh 'kill $PID'
+            echo '${PID}'
+            sh 'kill ${PID}'
         }
         failure {
             echo 'app run failed!'
