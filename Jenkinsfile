@@ -1,32 +1,27 @@
 pipeline {
     agent any
-    environment {
-        USERNAME = 'Ken Wekesa'
-        COUNTRY = 'Kenya'
-    }
     stages {
-        stage('Deploy - Staging') {
+        stage('Build') {
             steps {
-                echo "Hello ${USERNAME}, welcome to ${COUNTRY}"
-                sh 'printenv'
+                sh 'docker build -t simple-flask-app:1.0.0 .'
             }
         }
-        stage('Deploy - Production') {
-            steps{
-                input(message: 'Does the staging env look ok?')
+        stage('Deploy') {
+            steps {
+                sh 'docker run -p 3000:3000 simple-flask-app'
+                sh 'curl -I localhost:3000'
             }
         }
     }
     post {
         always {
-            echo 'One way or another, I have finished'
+            echo 'Pipeline completed'
         }
         success {
-            mail(
-                to: 'wanyamak884@icloud.com', 
-                subject: 'Success: ${currentBuild.fullDisplayName}', 
-                body: "Everything went swell!"
-                )
+            echo 'app run successfully'
+        }
+        failure {
+            echo 'app run failed!'
         }
     }
 }
