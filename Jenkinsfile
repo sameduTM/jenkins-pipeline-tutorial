@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'docker run -p 3000:3000 simple-flask-app'
+                sh 'docker run -p 3000:3000 simple-flask-app:1.0.0'
                 sh 'curl -I localhost:3000'
             }
         }
