@@ -1,29 +1,25 @@
 pipeline {
     agent any
     stages {
-        stage('Build') {
-            steps {
-                sh 'docker build -t simple-flask-app:1.0.0 .'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                sh 'docker run -d -p 3000:3000 simple-flask-app:1.0.0'
-                sh 'PID=$!'
-                sh 'curl -I localhost:3000'
+        stage('Build-Deploy') {
+            steps{
+                sh 'docker-compose up -d'
+                sh 'docker ps'
             }
         }
     }
     post {
         always {
-            echo 'Pipeline completed'
+            echo "This always runs"
         }
         success {
-            echo 'app run successfully'
-            echo '$PID'
+            echo "Pipeline runs successfully"
         }
         failure {
-            echo 'app run failed!'
+            echo "Pipeline failed"
+        }
+        unstable {
+            echo "Pipeline is unstable"
         }
     }
 }

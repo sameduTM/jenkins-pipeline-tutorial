@@ -8,6 +8,4 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-EXPOSE 3000
-
 CMD [ "python3", "server.py" ]
