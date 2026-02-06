@@ -4,15 +4,11 @@ pipeline {
         stage('Build') {
             steps{
                 sh 'docker-compose up -d --quiet-pull'
-                sh 'docker ps'
             }
         }
         stage('Testing') {
             steps{
-                sh 'python3 -m pip freeze'
-                sh 'ls -al'
-                sh 'cat requirements.txt'
-                sh 'pytest'
+                sh 'docker exec -it jenkins-pipeline-web sh pytest -vvv'
             }
         }
     }

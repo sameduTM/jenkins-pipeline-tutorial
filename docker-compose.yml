@@ -1,6 +1,7 @@
 services:
   web:
     build: .
+    container_name: jenkins-pipeline-web
     ports:
       - 5500:5500
     depends_on:
