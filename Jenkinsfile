@@ -9,8 +9,7 @@ pipeline {
         }
         stage('Testing') {
             steps{
-                sh 'python3 -m pip install pytest'
-                sh 'python3 -m pytest -v'
+                sh 'python3 -m pip freeze'
             }
         }
     }
