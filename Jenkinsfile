@@ -5,7 +5,6 @@ pipeline {
             steps{
                 sh 'docker-compose up -d --quiet-pull'
                 sh 'docker ps'
-                sh 'pytest'
             }
         }
         stage('Testing') {
