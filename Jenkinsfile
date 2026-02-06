@@ -12,6 +12,7 @@ pipeline {
                 sh 'python3 -m pip freeze'
                 sh 'ls -al'
                 sh 'cat requirements.txt'
+                sh 'pytest'
             }
         }
     }
