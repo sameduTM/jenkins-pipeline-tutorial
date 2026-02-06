@@ -6,7 +6,6 @@ services:
     depends_on:
       mysql_db:
         condition: service_healthy
-    command: sh -c "python3 -m pytest"
   mysql_db:
     image: mysql
     restart: always

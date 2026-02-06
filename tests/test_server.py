@@ -2,7 +2,7 @@ import requests
 
 
 def test_get_users():
-    url = "http://127.0.0.1:5500"
+    url = "http://127.0.0.1:5500/"
     response = requests.get(url)
     assert response.status_code == 200
     assert isinstance(response.json(), list)
