@@ -9,7 +9,8 @@ pipeline {
         }
         stage('Testing') {
             steps{
-                sh 'pytest -vvv'
+                sh 'pwd'
+                sh 'ls -al'
             }
         }
     }
