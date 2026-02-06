@@ -33,7 +33,7 @@ def create_user():
     cur.execute(query, (email, name))
     conn.commit()
 
-    return {"status": "user added successfully"}
+    return {"status": "user added successfully"}, 201
 
 
 if __name__ == "__main__":

@@ -1,10 +1,15 @@
 pipeline {
     agent any
     stages {
-        stage('Build-Deploy') {
+        stage('Build') {
             steps{
                 sh 'docker-compose up -d'
                 sh 'docker ps'
+            }
+        }
+        stage('Testing') {
+            steps{
+                sh 'pytest -vvv'
             }
         }
     }
