@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Testing') {
             steps{
-                sh 'docker ps'
+                sh 'docker exec jenkins-pipeline-web pytest'
             }
         }
     }
