@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Testing') {
             steps{
-                sh 'pwd'
+                sh 'docker ps'
             }
         }
     }
