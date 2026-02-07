@@ -3,14 +3,17 @@ pipeline {
     stages {
         stage('Build') {
             steps{
-                sh 'docker-compose up -d --quiet-pull'
+                sh 'docker-compose build -d'
             }
         }
         stage('Testing') {
             steps{
-                sh 'docker exec jenkins-pipeline-web pytest'
+                sh 'docker-compose up -d'
+                sh 'docker exec jenkins-pipeline-web pytest -vvv'
+                sh 'docker-compose down'
             }
         }
+        stage('Deploy') {}
     }
     post {
         always {
@@ -20,6 +23,7 @@ pipeline {
             echo "Pipeline runs successfully"
         }
         failure {
+            sh 'docker-compose down'
             echo "Pipeline failed"
         }
         unstable {
