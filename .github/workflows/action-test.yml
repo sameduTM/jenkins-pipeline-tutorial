@@ -1,4 +1,4 @@
-name: Check Branch Name
+name: main
 on: [push]
 
 permissions:
