@@ -1,20 +1,13 @@
-name: main
+name: learn-github-actions
+run-name: ${{ github.actor }} is learning Github Actions
 on: [push]
-
-permissions:
-  contents: read
-
 jobs:
-  jenkins-pipeline:
+  check-bats-version:
     runs-on: ubuntu-latest
     steps:
-      - uses: action/checkout@v3
-      - name: Jenkins Pipeline
-        run: |
-          echo 'The name of this branch is ${{ github.ref_name }}'
-  deploy:
-    runs-on: ubuntu-latest
-    needs: jenkins-pipeline
-    steps:
-      - name: Deploying to Prod
-        run: echo 'Deploying...'
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install -g bats
+      - run: bats -v
