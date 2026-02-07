@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Testing') {
             steps{
-                sh 'docker-compose up -d'
+                sh 'docker-compose up'
                 sh 'docker exec jenkins-pipeline-web pytest -vvv'
                 sh 'docker-compose down'
             }
