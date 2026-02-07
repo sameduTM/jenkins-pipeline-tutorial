@@ -13,7 +13,11 @@ pipeline {
                 sh 'docker-compose down'
             }
         }
-        stage('Deploy') {}
+        stage('Deploy') {
+            steps{
+                echo 'Deploying...'
+            }
+        }
     }
     post {
         always {
