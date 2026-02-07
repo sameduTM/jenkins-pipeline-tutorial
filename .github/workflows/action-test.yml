@@ -1,6 +1,9 @@
 name: Check Branch Name
 on: [push]
 
+permissions:
+  contents: read
+
 jobs:
   jenkins-pipeline:
     runs-on: ubuntu-latest
