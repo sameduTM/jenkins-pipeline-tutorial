@@ -1,0 +1,17 @@
+name: Check Branch Name
+on: [push]
+
+jobs:
+  jenkins-pipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: action/checkout@v3
+      - name: Jenkins Pipeline
+        run: |
+          echo 'The name of this branch is ${{ github.ref_name }}'
+  deploy:
+    runs-on: ubuntu-latest
+    needs: jenkins-pipeline
+    steps:
+      - name: Deploying to Prod
+        run: echo 'Deploying...'

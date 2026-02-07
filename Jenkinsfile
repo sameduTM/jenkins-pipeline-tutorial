@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') {
             steps{
-                sh 'docker-compose build'
+                sh 'docker-compose build -q'
             }
         }
         stage('Testing') {
@@ -15,6 +15,7 @@ pipeline {
         }
         stage('Deploy') {
             steps{
+                sh 'docker push'
                 echo 'Deploying...'
             }
         }
