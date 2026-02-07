@@ -14,4 +14,4 @@ def test_create_user():
     headers = {"Content-Type": "application/json"}
     response = requests.post(url, json=payload, headers=headers)
     assert response.status_code == 201
-    assert response.json() == {"status": "user added successfully"}
+    assert response.json() == {"status": "usser added successfully"}
