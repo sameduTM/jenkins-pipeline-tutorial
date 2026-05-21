@@ -11,6 +11,7 @@ pipeline {
                 sh 'docker run -d --name backend-flask-instance -p 5500:5500 backend-flask'
                 sh 'ls -al'
                 sh 'whoami'
+                sh 'docker ps'
                 echo 'Test passed successfully'
             }
         }
