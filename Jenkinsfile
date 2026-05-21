@@ -10,7 +10,7 @@ pipeline {
             steps{
                 sh 'docker run -d --name backend-flask-instance -p 5500:5500 backend-flask'
                 sh 'sleep 3'
-                sh 'docker exec -it backend-flask-instance sh -c "curl localhost:5500"'
+                sh 'docker exec backend-flask-instance sh -c "curl localhost:5500"'
             }
         }
         stage('Deploy') {
