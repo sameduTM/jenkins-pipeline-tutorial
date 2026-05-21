@@ -16,7 +16,6 @@ pipeline {
         }
         stage('Deploy') {
             steps{
-                sh 'docker push'
                 echo 'Deploying...'
             }
         }
@@ -29,7 +28,6 @@ pipeline {
             echo "Pipeline runs successfully"
         }
         failure {
-            sh 'docker-compose down'
             echo "Pipeline failed"
         }
         unstable {
