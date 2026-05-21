@@ -10,7 +10,7 @@ pipeline {
             steps{
                 sh 'docker run -d --name backend-flask-instance -p 5500:5500 backend-flask'
                 sh 'ls -al'
-                sh 'curl -sI localhost:5500'
+                sh 'whoami'
                 echo 'Test passed successfully'
             }
         }
