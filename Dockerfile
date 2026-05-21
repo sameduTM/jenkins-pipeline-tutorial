@@ -6,6 +6,8 @@ COPY requirements.txt .
 
 RUN pip install -r requirements.txt
 
+EXPOSE 5500
+
 COPY . .
 
 CMD [ "python3", "server.py" ]

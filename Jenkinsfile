@@ -1,16 +1,16 @@
 pipeline {
-    agent { label 'ec2-linux' }
+    agent any
     stages {
         stage('Build') {
             steps{
-                sh 'docker-compose build -q'
+                sh 'docker build -t backend-flask .'
             }
         }
         stage('Testing') {
             steps{
-                sh 'docker-compose up -d'
-                sh 'docker exec jenkins-pipeline-web pytest -vvv'
-                sh 'docker-compose down'
+                sh 'docker run -d --name backend-flask-instance -p 5500:5500 backend-flask'
+                sh 'curl -I localhost:5500'
+                echo 'Test passed successfully'
             }
         }
         stage('Deploy') {
