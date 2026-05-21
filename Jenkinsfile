@@ -16,13 +16,13 @@ pipeline {
         stage('Deploy') {
             steps{
                 echo 'Deploying...'
-                sh 'docker rm -f backend-flask-instance'
             }
         }
     }
     post {
         always {
             echo "This always runs"
+            sh 'docker rm -f backend-flask-instance'
         }
         success {
             echo "Pipeline runs successfully"
