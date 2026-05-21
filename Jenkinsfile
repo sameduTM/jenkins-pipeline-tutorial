@@ -9,7 +9,7 @@ pipeline {
         stage('Testing') {
             steps{
                 sh 'docker run -d --name backend-flask-instance -p 5500:5500 backend-flask'
-                sh 'curl -sI localhost:5500'
+                sh 'curl localhost:5500'
             }
         }
         stage('Deploy') {
