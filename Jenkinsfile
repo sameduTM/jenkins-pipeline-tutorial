@@ -9,15 +9,13 @@ pipeline {
         stage('Testing') {
             steps{
                 sh 'docker run -d --name backend-flask-instance -p 5500:5500 backend-flask'
-                sh 'ls -al'
-                sh 'whoami'
-                sh 'docker ps'
-                echo 'Test passed successfully'
+                sh 'curl -sI localhost:5500'
             }
         }
         stage('Deploy') {
             steps{
                 echo 'Deploying...'
+                sh 'docker rm -f backend-flask-instance'
             }
         }
     }
